@@ -1,2 +1,2 @@
-# MiusQ-
+# MiusQ
 MiusQ Audio Player
