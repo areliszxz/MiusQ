@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiusQ Pro | High-End Automotive Audio</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --accent: #ffffff;
+            --gray: #666666;
+            --border: rgba(255, 255, 255, 0.12);
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--accent);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Logo Background SVG --- */
+        .svg-bg-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.2rem; }
+        .v-tag { font-size: 0.6rem; border: 1px solid var(--gray); padding: 2px 6px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 500px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* --- CTA --- */
+        .cta {
+            margin-top: 50px;
+            padding: 15px 40px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* --- Bento Grid Features --- */
+        .specs {
+            padding: 100px 60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 15px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .bento {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
+
+        .bento-large { grid-column: span 2; }
+        
+        .bento i { font-size: 1.2rem; margin-bottom: 20px; color: var(--gray); }
+        .bento h3 { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+        .bento p { color: var(--gray); font-size: 0.95rem; font-weight: 300; }
+
+        /* --- Device Preview --- */
+        .preview {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .device-frame {
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 20px;
+            background: #080808;
+            box-shadow: 0 0 100px rgba(255,255,255,0.05);
+        }
+
+        .screen {
+            width: 100%;
+            aspect-ratio: 21/9;
+            background: #000;
+            border-radius: 25px;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer {
+            padding: 60px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+
+        .reveal { visibility: hidden; }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .specs { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+            .bento-large { grid-column: span 2; }
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">MIUSQ <span class="v-tag">STABLE 1.5</span></div>
+        <div style="font-size: 0.8rem; letter-spacing: 1px;">FOR ANDROID AUTOMOTIVE</div>
+    </nav>
+
+    <section class="hero">
+        <div class="svg-bg-container">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="1 2"/>
+                <circle cx="50" cy="50" r="35" fill="none" stroke="white" stroke-width="0.3" stroke-dasharray="1 1"/>
+                <circle cx="50" cy="50" r="25" fill="none" stroke="white" stroke-width="0.2"/>
+                <path d="M70,10 L85,15 L60,40" fill="none" stroke="white" stroke-width="0.8" opacity="0.8"/>
+                <path d="M80,80 L95,95" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <h1 class="reveal">FULL SCREEN<br>AUDIO ENGINE</h1>
+        <p class="reveal">Pureza visual sin compromisos. El reproductor de música definitivo para la consola de tu vehículo.</p>
+        <a href="https://tinyurl.com/MiusQ1-5" class="cta reveal">DESCARGAR MIUSQ 1.5</a>
+    </section>
+
+    <section class="preview reveal">
+        <div class="device-frame">
+            <div class="screen">
+                <i class="fas fa-play" style="font-size: 3rem; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs">
+        <div class="bento bento-large reveal">
+            <i class="fas fa-expand"></i>
+            <h3>Immersiveness</h3>
+            <p>Algoritmos de escalado inteligente que adaptan las portadas de álbumes a formatos Wide-Screen sin perder resolución.</p>
+        </div>
+        <div class="bento reveal">
+            <i class="fas fa-sliders-h"></i>
+            <h3>DSP Control</h3>
+            <p>Ecualizador de 5 bandas de alta precisión con gestión dinámica de ganancia.</p>
+        </div>
+        <div class="bento reveal">
+            <i class="fas fa-satellite-dish"></i>
+            <h3>Metadata Engine</h3>
+            <p>Sincronización instantánea con bases de datos globales para corregir arte faltante.</p>
+        </div>
+        <div class="bento reveal">
+            <i class="fas fa-car"></i>
+            <h3>CAN-Bus Ready</h3>
+            <p>Integración total con mandos multimedia físicos y protocolos Bluetooth AVRCP.</p>
+        </div>
+        <div class="bento bento-large reveal">
+            <i class="fas fa-code"></i>
+            <h3>Architecture</h3>
+            <p>Desarrollado bajo estándares Android 11+ (API 30). Soporte para FLAC, WAV, ALAC y formatos Lossless de alta fidelidad.</p>
+        </div>
+        <div class="bento reveal">
+            <i class="fas fa-lock"></i>
+            <h3>Drive Safe</h3>
+            <p>Bloqueo de controles para evitar distracciones y toques accidentales durante trayectos.</p>
+        </div>
+    </section>
+
+    <footer>
+        MIUSQ PROJECT &copy; 2026 // MINIMALISM MEETS AUDIO PERFORMANCE
+    </footer>
+
+    <script>
+        ScrollReveal().reveal('.reveal', {
+            distance: '60px',
+            duration: 1200,
+            delay: 200,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            interval: 100
+        });
+    </script>
+</body>
+</html>
